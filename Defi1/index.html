@@ -39,6 +39,22 @@
 
     <script type="text/javascript" src="./app.js">
         import {ajoutStudent, delStudent, findStudentID, findStudentName, calStudentMoy, filterByMoy, bestStudent, sortByMoy} from './app.js';
+        let studentList = document.getElementById('student-list');
+        let addStudentForm = document.getElementById('add-student-form');
+        let studentNameInput = document.getElementById('student-name');
+        let studentMoyInput = document.getElementById('student-moy');
+        
+        studentList.innerHTML = students.map(student => `<li>${student.name} - ${student.moy}</li>`).join('');
+
+        addStudentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let name = studentNameInput.value;
+            let moy = parseFloat(studentMoyInput.value);
+            ajoutStudent({name, moy});
+            studentList.innerHTML = students.map(student => `<li>${student.name} - ${student.moy}</li>`).join('');
+            studentNameInput.value = '';
+            studentMoyInput.value = '';
+        });
     </script>
     
 </body>
