@@ -1,4 +1,4 @@
-let students=[{
+export const students=[{
     id: 1,
     name: "Ahmed",
     age: 20,
