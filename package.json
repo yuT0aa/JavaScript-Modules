@@ -76,7 +76,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
   "bugs": {
     "url": "https://github.com/yuT0aa/JavaScript-Modules/issues"
   },

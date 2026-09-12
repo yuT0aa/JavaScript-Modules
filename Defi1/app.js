@@ -1,48 +1,84 @@
-import {students} from './etudiant.js'
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { students as initialStudents } from './etudiant.js';
 
-//1. Ajouter un étudiant. (spread operator au lieu de push)
-export const ajoutStudent=(newStudent)=>{
-    students=[...students,newStudent];
+export let students = [...initialStudents];
+
+export const ajoutStudent = (newStudent) => {
+  students = [...students, newStudent];
 };
 
-//2. Supprimer un étudiant. (filter ou splice)
-export const delStudent=(id)=>{
-    students=[students.filter(student=>student.id !==id)];
+export const delStudent = (id) => {
+  students = students.filter((student) => student.id !== id);
 };
 
-//3. Rechercher un étudiant par id. (find)
-export const findStudentID=(id)=>{
-    return students.find(student=>student.id ===id)
+export const findStudentID = (id) => {
+  return students.find((student) => student.id === id);
 };
 
-//4. Rechercher un étudiant par son nom. (filter)
-export const findStudentName=(name)=>{
-    return students.find(student=>student.name ===name)
+export const findStudentName = (name) => {
+  const query = name.trim().toLowerCase();
+  return students.find((student) => student.name.toLowerCase() === query);
 };
 
-//5. Calculer la moyenne d'un étudiant. (reduce)
-export const calStudentMoy=(id)=>{
-    const student=findStudentID(id);
-    if(student){
-        const sum=student.notes.reduce((acc,grade)=>acc+grade,0);
-        return sum/student.notes.length;
+export const calStudentMoy = (id) => {
+  const student = findStudentID(id);
+
+  if (!student || student.notes.length === 0) {
+    return 0;
+  }
+
+  const sum = student.notes.reduce((acc, grade) => acc + grade, 0);
+  return sum / student.notes.length;
+};
+
+export const filterByMoy = () => {
+  return students.filter((student) => calStudentMoy(student.id) >= 10);
+};
+
+export const bestStudent = () => {
+  return [...students].sort((a, b) => calStudentMoy(b.id) - calStudentMoy(a.id))[0];
+};
+
+export const sortByMoy = () => {
+  return students.sort((a, b) => calStudentMoy(b.id) - calStudentMoy(a.id));
+};
+
+if (typeof document !== 'undefined') {
+  const studentList = document.getElementById('student-list');
+  const addStudentForm = document.getElementById('add-student-form');
+  const studentNameInput = document.getElementById('student-name');
+  const studentMoyInput = document.getElementById('student-moy');
+
+  const renderStudents = () => {
+    if (!studentList) {
+      return;
     }
-};
 
-//6. Afficher les étudiants ayant une moyenne ≥ 10. (filter)
+    studentList.innerHTML = students
+      .map((student) => `<li>${student.name} - ${calStudentMoy(student.id).toFixed(1)}</li>`)
+      .join('');
+  };
 
-export const filterByMoy=()=>{
-    return students.filter(student=>calStudentMoy(student.id)>=10);
-};
+  addStudentForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-//7. Trouver l'étudiant ayant la meilleure moyenne. (sort)
-export const bestStudent=()=>{
-    return students.sort((a, b) => calStudentMoy(b.id) - calStudentMoy(a.id))[0];
-};
+    const name = studentNameInput?.value?.trim();
+    const moy = Number(studentMoyInput?.value);
 
-//8. Trier les étudiants par moyenne. (sort)
-export const sortByMoy=()=>{
-    return students.sort((a,b)=>calStudentMoy(b.id)-calStudentMoy(a.id));
-};
+    if (!name || Number.isNaN(moy)) {
+      return;
+    }
+
+    ajoutStudent({
+      id: Date.now(),
+      name,
+      age: 0,
+      notes: [moy],
+    });
+
+    studentNameInput.value = '';
+    studentMoyInput.value = '';
+    renderStudents();
+  });
+
+  renderStudents();
+}

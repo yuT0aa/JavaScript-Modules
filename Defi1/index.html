@@ -1,54 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script type="module" src="./app.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Management</title>
 </head>
 <body>
-    <header>
-        <h1>Student Management</h1>
-    </header>
-    <main>
-        <section>
-            <h2>Student List</h2>
-            <ul id="student-list">
-                <!-- Etudiants Display7417 -->
-            </ul>
-        </section>
-        <section>
-            <h2>Add Student</h2>
-            <form id="add-student-form">
-                <input type="text" id="student-name" placeholder="Name" required>
-                <input type="number" id="student-moy" placeholder="Moyenne" required>
-                <button type="submit">Add Student</button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Student Management System</p>
-    </footer>  
+  <header>
+    <h1>Student Management</h1>
+  </header>
 
-    <script type="text/javascript" src="./app.js">
-        import {ajoutStudent, delStudent, findStudentID, findStudentName, calStudentMoy, filterByMoy, bestStudent, sortByMoy} from './app.js';
-        let studentList = document.getElementById('student-list');
-        let addStudentForm = document.getElementById('add-student-form');
-        let studentNameInput = document.getElementById('student-name');
-        let studentMoyInput = document.getElementById('student-moy');
-        
-        studentList.innerHTML = students.map(student => `<li>${student.name} - ${student.moy}</li>`).join('');
+  <main>
+    <section>
+      <h2>Student List</h2>
+      <ul id="student-list"></ul>
+    </section>
 
-        addStudentForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            let name = studentNameInput.value;
-            let moy = parseFloat(studentMoyInput.value);
-            ajoutStudent({name, moy});
-            studentList.innerHTML = students.map(student => `<li>${student.name} - ${student.moy}</li>`).join('');
-            studentNameInput.value = '';
-            studentMoyInput.value = '';
-        });
-    </script>
-    
+    <section>
+      <h2>Add Student</h2>
+      <form id="add-student-form">
+        <input type="text" id="student-name" placeholder="Name" required />
+        <input type="number" id="student-moy" placeholder="Moyenne" required />
+        <button type="submit">Add Student</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Student Management System</p>
+  </footer>
+
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
