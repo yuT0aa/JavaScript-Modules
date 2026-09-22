@@ -39,7 +39,6 @@ const FormValidation =()=>{
                         type="text"
                         className="form-control"
                         id="nom"
-                        value={formData.Nom}
                         onChange={handleChange}
                         error={formData.Nom.length < 3 ? "Nom must be at least 3 characters long" : ""}
                     />
@@ -50,7 +49,6 @@ const FormValidation =()=>{
                         type="text"
                         className="form-control"
                         id="prenom"
-                        value={formData.Prenom}
                         onChange={handleChange}
                         error={formData.Prenom.length < 3 ? "Prenom must be at least 3 characters long" : ""}
                     />
@@ -61,7 +59,6 @@ const FormValidation =()=>{
                         type="email"
                         className="form-control"
                         id="email"
-                        value={formData.Email}
                         onChange={handleChange}
                         error={!/\S+@\S+\.\S+/.test(formData.Email) ? "Email is invalid" : ""}
                     />
@@ -71,7 +68,6 @@ const FormValidation =()=>{
                     <select
                         className="form-control"
                         id="genre"
-                        value={formData.Genre}
                         onChange={handleChange}
                         error={formData.Genre === "" ? "Genre is required" : ""}
                     >
@@ -86,7 +82,6 @@ const FormValidation =()=>{
                         type="text"
                         className="form-control"
                         id="ville"
-                        value={formData.Ville}
                         onChange={handleChange}
                         error={formData.Ville.length < 3 ? "Ville must be at least 3 characters long" : ""}
                     />
