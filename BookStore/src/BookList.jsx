@@ -61,11 +61,11 @@ const ListBooks=[
             onChange={(e)=>searchBooks(e.target.value)}
           />
         </div>
-        <div className="row">
+        <div className="container d-flex flex-wrap justify-content-center gap-4">
           {books.map((book)=>(
             <div key={book.isbn}>
-              <div className="card mb-4">
-                <img src={book.image} className="card-img-top" width="20%" height="70px" alt={book.title} />
+              <div className="card mb-4 h-100" style={{width: '18rem'}}>
+                <img src={book.image} className="card-img-top" width="100%" height="300px" alt={book.title} />
                 <div className="card-body">
                   <h5 className="card-title">{book.title}</h5>
                   <p className="card-text">Likes: {book.likes}</p>
