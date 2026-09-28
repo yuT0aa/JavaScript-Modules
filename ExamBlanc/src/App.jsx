@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaTrashAlt } from "react-icons/fa";
 
 function App (){
     const [todos,setTodos]=useState([]);
@@ -84,7 +85,7 @@ function App (){
                   onClick={() => handleDelete(todo.id)}
                   className="btn btn-danger btn-sm"
                 >
-                  Delete
+                  <FaTrashAlt />Delete
                 </button>
               </li>
             ))}
