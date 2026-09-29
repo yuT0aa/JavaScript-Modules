@@ -13,7 +13,7 @@ function App (){
         .catch((error)=>console.error('Error',error));
     },[]);
 
-    const handleAddTodo = (e) => {
+    const AddTodo = (e) => {
     e.preventDefault();
     if (taskText.trim() === '') return;
 
@@ -47,7 +47,7 @@ function App (){
         </div>
 
         <div className="card-body">
-          <form onSubmit={handleAddTodo} className="d-flex mb-3 gap-2">
+          <form onSubmit={AddTodo} className="d-flex mb-3 gap-2">
             <input
               type="text"
               className="form-control"
