@@ -1,0 +1,54 @@
+{
+  "joueurs": [
+    {
+      "id": 1,
+      "nom": "Yassine",
+      "score": 10
+    },
+    {
+      "id": 2,
+      "nom": "Sara",
+      "score": 20
+    },
+    {
+      "id": 3,
+      "nom": "Amine",
+      "score": 15
+    },
+    {
+      "id": 4,
+      "nom": "Khadija",
+      "score": 18
+    },
+    {
+      "id": 5,
+      "nom": "Omar",
+      "score": 12
+    },
+    {
+      "id": 6,
+      "nom": "Lina",
+      "score": 25
+    },
+    {
+      "id": 7,
+      "nom": "Mehdi",
+      "score": 8
+    },
+    {
+      "id": 8,
+      "nom": "Fatima",
+      "score": 22
+    },
+    {
+      "id": 9,
+      "nom": "Hamza",
+      "score": 14
+    },
+    {
+      "id": 10,
+      "nom": "Nour",
+      "score": 19
+    }
+  ]
+}
